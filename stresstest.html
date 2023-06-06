@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mind Matters Ujian Tekanan Dalam Talian</title>
+  <link rel="icon" type="image/png" href="mind_matters_logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .neon {
+      color: #fff;
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #0ff,
+        0 0 80px #0ff,
+        0 0 90px #0ff,
+        0 0 100px #0ff,
+        0 0 150px #0ff;
+    }
+    /* general styling */
+    :root {
+      font-size: calc(1vw + 1vh + 1.5vmin);
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    .container {
+      margin: 0 auto;
+    }
+    .container2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body {
+      font-family: Verdana;
+      text-align: center;
+      background-image: url('imagebg3.gif');
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+      opacity: 0; /* set initial opacity to 0 */
+      animation: fadeIn 1s ease-in-out forwards; /* specify the animation */
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0; /* animate from 0 opacity */
+      }
+      to {
+        opacity: 1; /* animate to 1 opacity */
+      }
+    }
+    h1 {
+      font-size:70px;
+      font-weight: 350;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    h {
+      display: block;
+      font-size: 18px;
+      color: #ffffff;
+      margin-top: 60px;
+      margin-bottom: 20px; /* add some space below the heading */
+    }
+
+    p {
+      margin-left: 20px;
+      margin-right: 20px;
+      text-align:center;
+      font-style: Verdana;
+      font-size: 19px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: black;
+    }
+
+    form {
+      display: inline-block;
+      width: 1200px;
+      font-size: 17px;
+      text-align: center;
+      text-shadow: 2px 2px 3px #ffffff;
+      padding: 20px;
+      color:black;
+      background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white background */
+      border: 4px solid #3b3b3b;
+      border-radius: 10px;
+      backdrop-filter: blur(10px); /* apply a blur filter to create the glassmorphism effect */
+      /* fallback background color for older browsers */
+    }
+
+    .introduction {
+      display: inline-block;
+      width: 1200px;
+      font-size: 16px;
+      text-align: center;
+      padding: 20px;
+      color:black;
+      background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white background */
+      border: 4px solid #3b3b3b;
+      border-radius: 10px;
+      backdrop-filter: blur(10px); /* apply a blur filter to create the glassmorphism effect */
+      /* fallback background color for older browsers */
+    }
+
+    .radio {
+      display: grid;
+      grid-template-columns: 30px 250px;
+      justify-content: center;
+      text-align: left;
+      gap: 30px;
+      padding: 10px;
+    }
+
+    .radio label {
+      display: flex;
+      align-items: center;
+    }
+
+    .radio input[type="radio"] {
+      margin-right: 5px;
+      transform: scale(1.5); /* Increase the scale value as needed */
+    }
+
+    .radio label span {
+      font-size: 1.5em; /* Increase the font size as needed */
+      transform: skewX(-15deg) scale(1.2);
+    }
+
+    .radio input[type="radio"]:hover {
+      transform: scale(1.8) rotate(360deg);
+      transition: transform 0.5s ease;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+    .prev-btn {
+      font-size: 15px;
+      padding: 10px 20px; /* add some padding to the button */
+      width:120px;
+      margin-top: 20px;
+      background-color: #4CAF50; /* set the background color */
+      color: #ffffff; /* set the text color */
+      border: none; /* remove the border */
+      border-radius: 4px; /* add some border radius */
+      cursor: pointer; /* add a pointer cursor on hover */
+    }
+
+    .prev-btn:hover {
+      background-color: #3e8e41; /* change the background color on hover */
+    }
+
+    .next-btn {
+      font-size: 15px;
+      padding: 10px 20px; /* add some padding to the button */
+      width:120px;
+      margin-top: 20px;
+      background-color: #4CAF50; /* set the background color */
+      color: #ffffff; /* set the text color */
+      border: none; /* remove the border */
+      border-radius: 4px; /* add some border radius */
+      cursor: pointer; /* add a pointer cursor on hover */
+    }
+
+    .next-btn:hover {
+      background-color: #3e8e41; /* change the background color on hover */
+    }
+
+    .submit-button{
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-size: 20px;
+      letter-spacing: 4px;
+      position: relative;
+      background-color: #16a085;
+      border: none;
+      color: #fff;
+      padding: 20px;
+      width: 200px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      transition-duration: 0.4s;
+      overflow: hidden;
+      box-shadow: 0 5px 15px #193047;
+      border-radius: 4px;
+      justify-content: center;
+    }
+
+    .submit-button:hover {
+      background: #fff;
+      box-shadow: 0px 2px 10px 5px #1abc9c;
+      color: #000;
+    }
+
+    .submit-button:after {
+      content: "";
+      background: #1abc9c;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px !important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s
+    }
+
+    .submit-button:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s
+    }
+
+    .submit-button:focus { outline:0; }
+
+    .image{
+      width:250px;
+      height:150px;
+      border: 2px solid rgb(255, 255, 255);
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px gray;
+    }
+
+    #result {
+      text-align: center;
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 32px;
+      padding: 20px;
+    }
+  </style>
+  <script type="text/javascript">
+
+function startTest() {
+  document.querySelector('.introduction').style.display = 'none';
+  document.querySelector('#questions-form').style.display = 'inline-block';
+}
+    
+    var currentQuestion = 1;
+
+    function nextQuestion() {
+      // Hide the current question
+      var current = document.getElementById("q" + currentQuestion);
+      current.style.display = "none";
+      
+      // Show the next question
+      currentQuestion++;
+      var next = document.getElementById("q" + currentQuestion);
+      next.style.display = "block";
+      
+      // Show the previous button if it's not the first question
+      if (currentQuestion > 0) {
+        var prevButton = document.getElementById("q" + (currentQuestion - 1)).querySelector("button");
+        prevButton.style.display = "block";
+      }
+      
+      // If this is the last question, show the score button
+      if (currentQuestion == 14) {
+        var button = document.getElementById("button");
+        button.style.display = "block";
+      }
+    }
+
+    function prevQuestion() {
+      // Hide the current question
+      var current = document.getElementById("q" + currentQuestion);
+      current.style.display = "none";
+      
+      // Show the previous question
+      currentQuestion--;
+      var prev = document.getElementById("q" + currentQuestion);
+      prev.style.display = "block";
+      
+      // Hide the previous button if it's the first question
+      if (currentQuestion == 1) {
+        var prevButton = document.getElementById("q" + currentQuestion).querySelector("button");
+        prevButton.style.display = "block";
+      }
+      
+      // Hide the score button if it's not the last question
+      if (currentQuestion < 14) {
+        var button = document.getElementById("button");
+        button.style.display = "none";
+      }
+    }
+    
+    function calculateScore() {
+      // Check if all questions are answered
+      var allQuestionsAnswered = true;
+      for (var i = 1; i <= 13; i++) {
+        var question = document.getElementById("q" + i);
+        var answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (!answer) {
+          allQuestionsAnswered = false;
+          question.style.backgroundColor = "pink";
+        } else {
+          question.style.backgroundColor = "white";
+        }
+      }
+
+      if (!allQuestionsAnswered) {
+        alert("Anda telah terlepas menjawab satu soalan atau lebih. Sila muat semula halaman dan jawab semula semua soalan !!!");
+        return;
+      }
+      // Get the user's answers
+      var q1 = parseInt(document.querySelector('input[name="q1"]:checked').value);
+      var q2 = parseInt(document.querySelector('input[name="q2"]:checked').value);
+      var q3 = parseInt(document.querySelector('input[name="q3"]:checked').value);
+      var q4 = parseInt(document.querySelector('input[name="q4"]:checked').value);
+      var q5 = parseInt(document.querySelector('input[name="q5"]:checked').value);
+      var q6 = parseInt(document.querySelector('input[name="q6"]:checked').value);
+      var q7 = parseInt(document.querySelector('input[name="q7"]:checked').value);
+      var q8 = parseInt(document.querySelector('input[name="q8"]:checked').value);
+      var q9 = parseInt(document.querySelector('input[name="q9"]:checked').value);
+      var q10 = parseInt(document.querySelector('input[name="q10"]:checked').value);
+      var q11 = parseInt(document.querySelector('input[name="q11"]:checked').value);
+      var q12 = parseInt(document.querySelector('input[name="q12"]:checked').value);
+      var q13 = parseInt(document.querySelector('input[name="q13"]:checked').value);
+
+
+      // Calculate the score
+      var score = q1 + q2+ q3 + q4 + q5 + q6 + q7 + q8 + q9 + q10 + q11 + q12 + q13;
+      
+      // Display the result
+      var result = document.getElementById("result");
+      var percentage = ((score / 40) * 100).toFixed(2);
+
+      if (score <= 14) {
+        result.innerHTML = "Tahap tekanan anda adalah rendah. Anda berasa tenang. <br>Anda benar-benar handal dalam mengatasi tekanan anda. Jika anda mula melihat perubahan dalam kehidupan anda, <br>anda boleh cuba untuk mengekalkan tahap tekanan yang rendah ini dengan menemui sumber-sumber tekanan yang anda boleh hapuskan. <br><br> Kuiz ini BUKANLAH sebuah alat diagnostik. <br>Gangguan kesihatan mental hanya boleh didiagnosis oleh pakaer perubatan.";
+        result.style.color= "#00ff00";
+        result.style.backgroundColor = "#b7ffbf";
+      } else if (score <= 25) {
+        result.innerHTML = "Tahap tekanan anda adalah sederhana. Anda pasti sedang mengalami beberapa tekanan. <br>Anda mungkin mempunyai kemahiran yang mencukupi untuk mengatasi tekanan ini. Anda harus memperbanyakkan cara untuk menangani tekanan anda dengan menemui sumber-sumber tekanan <br>yang boleh anda hapuskan dan juga memasukkan strategi yang berkesan seperti aktiviti fizikal, latihan pernafasan atau mendengari muzik. <br><br> Kuiz ini BUKANLAH sebuah alat diagnostik. <br>Gangguan kesihatan mental hanya boleh didiagnosis oleh pakar perubatan.";
+        result.style.color= "blue";
+        result.style.backgroundColor = "#e5f7fe";
+      } else {
+        result.innerHTML = "Tahap tekanan anda adalah tinggi. Terlalu banyak tekanan yang sedang berlaku dalam kehidupan anda. <br>Ambil langkah untuk kurangkan dan jaga tahap tekanan anda sekarang. Anda harus mencari cara untuk menangani tekanan anda dengan menemui sumber-sumber tekanan yang boleh anda hapuskan dan juga memasukkan strategi yang berkesan seperti aktiviti fizikal, latihan pernafasan atau mendengari muzik. <br>Jika anda rasa anda mungkin mengalami tekanan, kebimbangan, atau apa-apa keadaan kesihatan mental yang lain, Mind Matters sangat mengesyorkan agar anda mendapatkan bantuan daripada pakar perubatan untuk menerima diagnosis dan sokongan yang betul. <br><br> Kuiz ini BUKANLAH sebuah alat diagnostik. <br>Gangguan kesihatan mental hanya boleh didiagnosis oleh pakar perubatan.";
+        result.style.color= "red";
+        result.style.backgroundColor = "#ffe5e5";
+      }
+      result.innerHTML = "<span style='font-size: 30px; text-shadow: 1px 1px 2px rgb(0,0,0);'>Jumlah skor tekanan anda ialah " + score + "/40. (" + percentage + "%)</span><br><span style='font-size: 20px; color: black;'>" + result.innerHTML + "</span>";
+
+    // Hide the questions and previous buttons and show the first question
+    for (var i = 2; i <= 13; i++) {
+      var question = document.getElementById("q" + i);
+      question.style.display = "none";
+      var prevButton = question.querySelector("button");
+      prevButton.style.display = "none";
+      }
+      var button = document.getElementById("button");
+      button.style.display = "none";
+    }
+  </script>
+</head>
+<div class="container">
+  <h1 class="neon">Mind Matters<br>Ujian Tekanan Dalam Talian</h1>
+</div>
+  <h>Sila jawab soalan berikut untuk menentukan tahap tekanan anda:</h>
+    <div class="introduction">
+      <p>Selamat datang ke Mind Matters Ujian Saringan Minda Dalam Talian. <br><br>Ujian saringan minda ini TIDAK ditujukan untuk digunakan sebagai alat diagnostik.
+
+        <br><br>Berdasarkan jawapan yang telah anda berikan, anda akan menerima keputusan yang akan memberikan anda gambaran tentang betapa tertekannya anda. Diingatkan semula bahawa keputusan ujian ini tidak akan memberitahu jika kesihatan anda mengalami risiko daripada tekanan yang dialami oleh anda.
+        
+        Jika anda masih bimbang akan tahap tekanan anda atau tekanan gejala fizikal, anda digalakkan untuk mendapatkan bantuan daripada pakar perubatan seperti doctor atau pakar kesihatan mental.
+
+        <br><br>Mind Matters percaya bahawa penilaian ini boleh membantu untuk dijadikan langkah pertama yang berharga untuk mendapatkan rawatan. Kebanyakkan orang berhenti untuk mendapatkan bantuan kerana bimbang akan bahawa kembimbangan mereka adalah tidak sah atau terlalu teruk untuk berjumpa dengan pakar.
+      
+       <br><br> Sila jawab semua soalan dengan jujur. </p>
+      <button type="button" class="submit-button" onclick="startTest()">Mulakan Ujian</button>
+    </div>
+    <div class="container">
+    <form id="questions-form" style="display:none">
+
+  <form>
+    <div id="q1" >
+      <img src="Q1.jpg" class="image" alt="overwhelmed">
+      <p>1. Berapa kerapkah anda berasa tertekan atau tidak dapat melakukan tanggungjawab harian anda?</p>
+      <div class="radio">
+      <input type="radio"  name="q1" value="0"> Tidak pernah<br>
+      <input type="radio"  name="q1" value="1"> Jarang<br>
+      <input type="radio"  name="q1" value="2"> Beberapa kali seminggu<br>
+      <input type="radio"  name="q1" value="3"> Hampir setiap hari<br>
+    </div>
+      <div class="button-container">
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+    </div>
+
+    <div id="q2" style="display: none;">
+      <img src="Q2.jpg" class="image" alt="headaches">
+      <p>2. Berapa kerapkah anda mengalami gejala tekanan fizikal seperti sakit kepala atau ketegangan otot?</p>
+      <div class="radio">
+      <input type="radio" name="q2" value="0"> Tidak pernah<br>
+      <input type="radio" name="q2" value="1"> Jarang<br>
+      <input type="radio" name="q2" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q2" value="3"> Hampir setiap hari<br>
+      </div>
+      <div class="button-container">
+      <button type="button" class="prev-btn" onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+    </div>
+    
+    <div id="q3" style="display: none;">
+      <img src="Q3.jpg" class="image" alt="worried">
+      <p>3. Berapa kerapkah anda berasa cemas atau bimbang?</p>
+      <div class="radio">
+      <input type="radio" name="q3" value="0"> Tidak pernah<br>
+      <input type="radio" name="q3" value="1"> Jarang<br>
+      <input type="radio" name="q3" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q3" value="3"> Hampir setiap hari<br>
+      </div>
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+    </div>
+
+    <div id="q4" style="display: none;">
+      <img src="Q4.jpg" class="image" alt="hopelessness">
+      <p>4. Berapa kerapkah anda mengalami perasaan untuk berputus asa?</p>
+      <div class="radio">
+      <input type="radio" name="q4" value="0"> Tidak pernah<br>
+      <input type="radio" name="q4" value="1"> Jarang<br>
+      <input type="radio" name="q4" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q4" value="3"> Hampir setiap hari<br>
+      </div>
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+    </div>
+
+    <div id="q5" style="display: none;">
+      <img src="Q5.jpg" class="image" alt="disconnected">
+      <p>5. Berapa kerapkah anda berasa hubungan anda terputus bersama ahli keluarga dan rakan-rakan?</p>
+      <div class="radio">
+      <input type="radio" name="q5" value="0"> Tidak pernah<br>
+      <input type="radio" name="q5" value="1"> Jarang<br>
+      <input type="radio" name="q5" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q5" value="3"> Hampir setiap hari<br>
+      </div>
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+  </div>
+
+    <div id="q6" style="display: none;">
+      <img src="Q6.jpg" class="image" alt="smoking">
+      <p>6. Berapa kerapkah anda melakukan tabiat yang tidak sihat seperti berminum atau merokok untuk mengatasi tekanan?</p>
+      <div class="radio">
+      <input type="radio" name="q6" value="0"> Tidak pernah<br>
+      <input type="radio" name="q6" value="1"> Jarang<br>
+      <input type="radio" name="q6" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q6" value="3"> Hampir setiap hari<br>
+    </div>
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+    </div>
+
+    <div id="q7" style="display: none;">
+      <img src="Q7.jpg" class="image" alt="focus">
+      <p>7. Semasa waktu kerja, adakah anda sukar untuk kekal fokus dan menumpukan perhatian terhadap tugasan yang sedang anda lakukan?</p>
+      <div class="radio">
+      <input type="radio" name="q7" value="0"> Tidak pernah<br>
+      <input type="radio" name="q7" value="1"> Jarang<br>
+      <input type="radio" name="q7" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q7" value="3"> Hampir setiap hari<br>
+      </div>
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+  </div>
+
+    <div id="q8" style="display: none;">
+      <img src="Q8.jpg" class="image" alt="expectations">
+    <p>8. Berapa kerapkah anda berasa seperti anda tidak dapat memenuhi harapan anda?</p>
+    <div class="radio">
+    <input type="radio" name="q8" value="0"> Tidak pernah<br>
+    <input type="radio" name="q8" value="1"> Jarang<br>
+    <input type="radio" name="q8" value="2"> Beberapa kali seminggu<br>
+    <input type="radio" name="q8" value="3"> Hampir setiap hari<br>
+    </div>
+    <div class="button-container">
+    <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+    <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+    </div>
+  </div>
+
+    <div id="q9" style="display: none;">
+      <img src="Q9.jpg" class="image" alt="decisions">
+      <p>9. Berapa kerapkah anda mengalami kesukaran untuk menumpukan perhatian atau membuat sesuatu keputusan?</p>
+      <div class="radio">
+      <input type="radio" name="q9" value="0"> Tidak pernah<br>
+      <input type="radio" name="q9" value="1"> Jarang<br>
+      <input type="radio" name="q9" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q9" value="3"> Hampir setiap kali<br>
+      </div> 
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+  </div>
+
+    <div id="q10" style="display: none;">
+      <img src="Q10.jpg" class="image" alt="conflict">
+      <p>10. Berapa kerapkah anda mengalami ketegangan atau konflik dengan rakan sekerja atau ahli keluarga?</p>
+      <div class="radio">
+      <input type="radio" name="q10" value="0"> Tidak pernah<br>
+      <input type="radio" name="q10" value="1"> Jarang<br>
+      <input type="radio" name="q10" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q10" value="3"> Hampir setiap hari<br>
+      </div> 
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+    </div>
+
+    <div id="q11" style="display: none;">
+      <img src="Q11.jpg" class="image" alt="health">
+      <p>11. Berapa kerapkah anda berasa tahap tekanan anda memberikan kesan terhadap kesihatan fizikal anda?</p>
+      <div class="radio">
+      <input type="radio" name="q11" value="0"> Tidak pernah<br>
+      <input type="radio" name="q11" value="1"> Jarang<br>
+      <input type="radio" name="q11" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q11" value="3"> Hampir setiap hari<br>
+      </div>
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+  </div>
+
+    <div id="q12" style="display: none;">
+      <img src="Q12.jpg" class="image" alt="break">
+      <p>12. Berapa kerapkah anda berasa bahawa anda memerlukan waktu rehat daripada rutin harian anda untuk mengurangkan tekanan anda?</p>
+      <div class="radio">
+      <input type="radio" name="q12" value="0"> Tidak pernah<br>
+      <input type="radio" name="q12" value="1"> Jarang<br>
+      <input type="radio" name="q12" value="2"> Beberapa kali seminggu<br>
+      <input type="radio" name="q12" value="3"> Hampir setiap hari<br> 
+      </div>
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+    </div>
+
+    <div id="q13" style="display: none;">
+      <img src="Q13.jpg" class="image" alt="suicide">
+      <p>13. Pernahkah anda terfikir untuk membunuh diri?</p>
+      <div class="radio">
+      <input type="radio" name="q13" value="0"> Tidak<br>
+      <input type="radio" name="q13" value="4"> Ya<br>
+      </div> 
+      <div class="button-container">
+      <button type="button" class="prev-btn"onclick="prevQuestion()">Sebelumnya</button>
+      <button type="button" class="next-btn" onclick="nextQuestion();">Seterusnya</button>
+      </div>
+    </div>
+
+    <div id="q14" style="display: none;">
+      <h2>Terima kasih kerana telah melengkapkan ujian ini!</h2>
+      <p>Klik butang di bawah untuk melihat keputusan anda:</p>
+      <div class="container2">
+        <button id="button" type="button" onclick="calculateScore();" class="submit-button" style="display: none;">Hantar</button>
+      </div>
+    </div>
+
+  </form>
+  <div id="result"></div>
+</body>
+</html>
